@@ -1,13 +1,12 @@
 const { Octokit } = require("@octokit/rest");
 const { createAppAuth } = require("@octokit/auth-app");
-const eol = require('eol')
 
 const owner = "Mailoop"
 const repo = "app"
 
 module.exports = async function (context, req) {
-
-    const { body: {issue_number, body}} = req
+    const { body: { issue_number, body } } = req
+    console.log(body)
     const octokit = new Octokit({
         authStrategy: createAppAuth,
             auth: {
