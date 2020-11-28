@@ -6,10 +6,6 @@ const owner = "Mailoop"
 const repo = "app"
 
 module.exports = async function (context, req) {
-    const authorized = req.headers.authorization == `Token ${process.env.AUTHORIZATION_TOKEN}`
-    if (!authorized) {
-        throw "Unauthorized"
-    }
 
     const { body: {issue_number, body}} = req
     const octokit = new Octokit({
