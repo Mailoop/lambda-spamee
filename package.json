@@ -1,0 +1,14 @@
+{
+  "name": "postgithubcommentlambda",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@octokit/auth-app": "^2.10.2",
+    "@octokit/rest": "^18.0.9"
+  },
+  "devDependencies": {}
+}
