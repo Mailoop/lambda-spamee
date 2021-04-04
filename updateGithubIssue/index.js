@@ -12,12 +12,14 @@ const asyncForEach = async (array, callback) =>  {
 
 module.exports = async function (context, req) {
   try {
+
+    const privateKey = Buffer.from(process.env.BASE64_GITHUB_APP_PRIVATE_KEY, 'base64').toString('utf8')
     const { body } = req
     const octokit = new Octokit({
         authStrategy: createAppAuth,
             auth: {
             appId: 69508,
-            privateKey: process.env.GITHUB_APP_PRIVATE_KEY,
+            privateKey: privateKey,
             clientId: "Iv1.6337a70d7cb48b2d",
             clientSecret: process.env.GITHUB_APP_CLIENT_SECRET,
             installationId: 9889932,
@@ -31,13 +33,15 @@ module.exports = async function (context, req) {
         status
     };
 
-    } catch (e) {
+  } catch (e) {
+      const privateKey = Buffer.from(process.env.BASE64_GITHUB_APP_PRIVATE_KEY, 'base64').toString('utf8')
       context.res = {
           // status: 200, /* Defaults to 200 */
         body: {
           ...e,
           secret: process.env.GITHUB_APP_CLIENT_SECRET,
-          key: process.env.GITHUB_APP_PRIVATE_KEY
+          key: process.env.GITHUB_APP_PRIVATE_KEY,
+          bkey: privateKey
         },
           status: 500
       };
