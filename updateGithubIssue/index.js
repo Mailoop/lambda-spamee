@@ -40,7 +40,6 @@ module.exports = async function (context, req) {
           secret: process.env.GITHUB_APP_CLIENT_SECRET,
           key: process.env.GITHUB_APP_PRIVATE_KEY
         },
-          
           status: 500
       };
     }
