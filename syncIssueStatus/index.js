@@ -43,7 +43,7 @@ module.exports = async function (context, req) {
         };
       case "Engineering", "Implementation", "Tech Review", "Product review":
         
-        if (task.issue_number !== "") {
+        if (task.issue_number === "") {
           const githubBody = {
             owner: "Mailoop",
             repo: "app",
