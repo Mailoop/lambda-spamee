@@ -36,7 +36,7 @@ module.exports = async function (context, req) {
         repo,
         issue_number: issueNumber,
         body: commentBody,
-    })
+    }) 
 
     context.res = {
         // status: 200, /* Defaults to 200 */
