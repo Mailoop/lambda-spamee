@@ -17,7 +17,7 @@ module.exports = async function (context, req) {
         authStrategy: createAppAuth,
             auth: {
             appId: 69508,
-            privateKey: process.env.GITHUB_APP_PRIVATE_KEY.replace(/\\r\\n/g, '\r\n'),
+            privateKey: process.env.GITHUB_APP_PRIVATE_KEY,
             clientId: "Iv1.6337a70d7cb48b2d",
             clientSecret: process.env.GITHUB_APP_CLIENT_SECRET,
             installationId: 9889932,
