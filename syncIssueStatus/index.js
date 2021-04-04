@@ -50,12 +50,12 @@ module.exports = async function (context, req) {
             title: task.Name
           }
           const { status, data } = await octokit.issues.create(githubBody)
-        }
-        context.res = {
+          context.res = {
             // status: 200, /* Defaults to 200 */
-            body: data ,
+            body: data,
             status
-        };
+          };
+        }
     }
       
 
