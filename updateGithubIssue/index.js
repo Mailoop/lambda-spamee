@@ -34,14 +34,10 @@ module.exports = async function (context, req) {
     };
 
   } catch (e) {
-      const privateKey = Buffer.from(process.env.BASE64_GITHUB_APP_PRIVATE_KEY, 'base64').toString('utf8')
       context.res = {
           // status: 200, /* Defaults to 200 */
         body: {
           ...e,
-          secret: process.env.GITHUB_APP_CLIENT_SECRET,
-          key: process.env.GITHUB_APP_PRIVATE_KEY,
-          bkey: privateKey
         },
           status: 500
       };
