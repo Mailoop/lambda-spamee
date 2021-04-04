@@ -11,6 +11,7 @@ const asyncForEach = async (array, callback) =>  {
 }
 
 module.exports = async function (context, req) {
+  try {
     const { body } = req
     const octokit = new Octokit({
         authStrategy: createAppAuth,
@@ -24,11 +25,18 @@ module.exports = async function (context, req) {
     });
 
     const { status, data } = await octokit.issues.update(body)
-
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: data ,
         status
     };
+
+    } catch (e) {
+      context.res = {
+          // status: 200, /* Defaults to 200 */
+          body: e ,
+          status: 500
+      };
+    }
 
 }
