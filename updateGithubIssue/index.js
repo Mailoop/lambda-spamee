@@ -35,7 +35,6 @@ module.exports = async function (context, req) {
       context.res = {
           // status: 200, /* Defaults to 200 */
         body: {
-          context: {...context},
           ...e,
           secret: process.env.GITHUB_APP_CLIENT_SECRET,
           key: process.env.GITHUB_APP_PRIVATE_KEY
