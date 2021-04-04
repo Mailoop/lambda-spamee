@@ -15,14 +15,14 @@ module.exports = async function (context, req) {
 
     const privateKey = Buffer.from(process.env.BASE64_GITHUB_APP_PRIVATE_KEY, 'base64').toString('utf8')
     const octokit = new Octokit({
-        authStrategy: createAppAuth,
-            auth: {
-            appId: 69508,
-            privateKey: privateKey,
-            clientId: "Iv1.6337a70d7cb48b2d",
-            clientSecret: process.env.GITHUB_APP_CLIENT_SECRET,
-            installationId: 9889932,
-        },
+      authStrategy: createAppAuth,
+      auth: {
+        appId: 69508,
+        privateKey: privateKey,
+        clientId: "Iv1.6337a70d7cb48b2d",
+        clientSecret: process.env.GITHUB_APP_CLIENT_SECRET,
+        installationId: 9889932,
+      },
     });
 
     const { body: task } = req
@@ -37,9 +37,9 @@ module.exports = async function (context, req) {
         }
         const { status, data } = await octokit.issues.update(githubBody)
         context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: data ,
-            status
+          // status: 200, /* Defaults to 200 */
+          body: data,
+          status
         };
       case "Engineering", "Implementation", "Tech Review", "Product review":
         
@@ -56,9 +56,14 @@ module.exports = async function (context, req) {
             status
           };
         }
+      default:
+        context.res = {
+          // status: 200, /* Defaults to 200 */
+          body: "Unknow",
+          status: 404
+        };
     }
       
-
   } catch (e) {
       context.res = {
           // status: 200, /* Defaults to 200 */
