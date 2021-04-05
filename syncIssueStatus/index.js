@@ -26,8 +26,9 @@ module.exports = async function (context, req) {
     });
 
     const { body: task } = req
+    console("Req")  
 
-    switch (task.status) {
+    switch (task.Status) {
       case 'Done':
         const githubBody = {
           owner: "Mailoop",
