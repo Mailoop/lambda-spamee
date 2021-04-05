@@ -26,9 +26,11 @@ module.exports = async function (context, req) {
     });
 
     const { body: task } = req
-    console("Req")  
 
-    switch (task.Status) {
+    const status = task.Status.toLowerCase().replace(" ", "_")
+    console.log(status)
+
+    switch (status) {
       case 'Done':
         const githubBody = {
           owner: "Mailoop",
@@ -42,7 +44,9 @@ module.exports = async function (context, req) {
           body: data,
           status
         };
-      case "Engineering", "Implementation", "Tech Review", "Product review":
+        break;
+      case "engineering", "implementation", "tech_review", "product_review":
+        console.log("coucou")
         
         if (task.issue_number === "") {
           const githubBody = {
@@ -57,6 +61,7 @@ module.exports = async function (context, req) {
             status
           };
         }
+        break;
       default:
         context.res = {
           // status: 200, /* Defaults to 200 */

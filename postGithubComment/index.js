@@ -1,7 +1,5 @@
 const { Octokit } = require("@octokit/rest");
 const { createAppAuth } = require("@octokit/auth-app");
-const { BlobServiceClient } = require('@azure/storage-blob');
-const { v1: uuid} = require('uuid');
 
 
 const owner = "Mailoop"
