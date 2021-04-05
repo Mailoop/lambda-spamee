@@ -66,6 +66,7 @@ module.exports = async function (context, req) {
     }
       
   } catch (e) {
+      console.log(e)
       context.res = {
           // status: 200, /* Defaults to 200 */
         body: {
